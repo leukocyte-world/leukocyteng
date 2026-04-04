@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | Insights by LeukocyteNG</title>
+  <meta name="description" content="Read the latest insights on SEO, Web Development, Blockchain and Digital Marketing by LeukocyteNG.">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="mesh-bg"></div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">Leuko<span>cyteNG</span></a>
+      <div class="nav__links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="blog.html" class="active">Blog</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <a href="contact.html" class="btn btn-primary nav__cta">Let's Talk</a>
+      <button class="nav__toggle" id="navToggle"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="nav__mobile" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="projects.html">Projects</a>
+    <a href="blog.html" class="active">Blog</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <header class="page-hero container">
+    <div class="badge">Insights & Thoughts</div>
+    <h1>The LeukocyteNG Blog</h1>
+    <p>Articles on breaking down complex development concepts, dominating search engine rankings, and navigating the vast Web3 landscape.</p>
+  </header>
+
+  <section class="section container" style="padding-top: 0;">
+    <!-- Dynamic Blog Container (Loaded from LocalStorage later via admin) -->
+    <div class="blog-grid" id="blogContainer">
+      <!-- Static Fallback Article -->
+      <a href="#" class="card blog-card">
+        <div class="blog-card__thumb" style="background: rgba(0,224,127,0.1);">SEO</div>
+        <div class="blog-card__meta">
+          <span class="blog-card__cat">Marketing</span>
+          <span>April 4, 2026</span>
+        </div>
+        <h3>The Anatomy of High-Ranking Content in 2026</h3>
+        <p>A deep dive into semantic SEO, structured data, and why keyword stuffing is officially obsolete...</p>
+        <div class="blog-card__read">Read Article &rarr;</div>
+      </a>
+      
+      <a href="#" class="card blog-card">
+        <div class="blog-card__thumb" style="background: rgba(79,141,255,0.1);"></></div>
+        <div class="blog-card__meta">
+          <span class="blog-card__cat">Web Dev</span>
+          <span>March 28, 2026</span>
+        </div>
+        <h3>Why Next.js Remains King for Fast Web Apps</h3>
+        <p>Exploring Server-Side Rendering (SSR), Static Site Generation (SSG), and how it affects your conversions...</p>
+        <div class="blog-card__read">Read Article &rarr;</div>
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer container">
+    <div class="footer__bottom" style="border-top: none; padding-top: 0;">
+      <div class="footer__copyright">&copy; <span id="year">2026</span> LeukocyteNG. All rights reserved.</div>
+      <div class="footer__legal">
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="admin.html">Admin Login</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // In a real scenario or with JS, we pull posts from localStorage here
+    window.addEventListener('DOMContentLoaded', () => {
+      const posts = JSON.parse(localStorage.getItem('leuko_blog_posts') || '[]');
+      if(posts.length > 0) {
+        const container = document.getElementById('blogContainer');
+        // Clear static if dynamic exists
+        // container.innerHTML = ''; 
+        posts.forEach(post => {
+          container.insertAdjacentHTML('afterbegin', `
+            <a href="#" class="card blog-card">
+              <div class="blog-card__thumb" style="background: rgba(0,224,127,0.1);">📝</div>
+              <div class="blog-card__meta">
+                <span class="blog-card__cat">${post.category || 'General'}</span>
+                <span>${post.date}</span>
+              </div>
+              <h3>${post.title}</h3>
+              <p>${post.excerpt}</p>
+              <div class="blog-card__read">Read Article &rarr;</div>
+            </a>
+          `);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact LeukocyteNG | Web Developer & SEO Expert</title>
+  <meta name="description" content="Get in touch with LeukocyteNG for web development, blockchain solutions, or SEO consulting.">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="mesh-bg"></div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__logo">Leuko<span>cyteNG</span></a>
+      <div class="nav__links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html" class="active">Contact</a>
+      </div>
+      <button class="nav__toggle" id="navToggle"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="nav__mobile" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="projects.html">Projects</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html" class="active">Contact</a>
+  </div>
+
+  <header class="page-hero container">
+    <div class="badge">Get In Touch</div>
+    <h1>Let's Build Something Great</h1>
+    <p>Have an idea or a business that needs scaling? Shoot me a message and let's get to work.</p>
+  </header>
+
+  <section class="section container" style="padding-top: 0;">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>Contact Information</h2>
+        <p>I aim to respond to all business inquiries within 24 hours. Whether you're looking for web development, SEO, or a full blockchain architecture, I'm ready to listen.</p>
+        
+        <div class="contact-item">
+          <div class="contact-item__icon" style="background: rgba(0,224,127,0.1); color: var(--green);">✉️</div>
+          <div>
+            <div class="contact-item__label">Email</div>
+            <div class="contact-item__value">hello@leukocyteng.com</div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-item__icon" style="background: rgba(79,141,255,0.1); color: var(--blue);">📱</div>
+          <div>
+            <div class="contact-item__label">Social Media</div>
+            <div class="contact-item__value">
+              <a href="#" style="color:var(--text-primary);">Twitter</a> / 
+              <a href="#" style="color:var(--text-primary);">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-item__icon" style="background: rgba(139,92,246,0.1); color: var(--purple);">📍</div>
+          <div>
+            <div class="contact-item__label">Location</div>
+            <div class="contact-item__value">Available Remotely (Global)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" required placeholder="John Doe">
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" required placeholder="john@example.com">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <select id="subject" required>
+              <option value="">Select a topic...</option>
+              <option value="web">Web Development</option>
+              <option value="seo">SEO & Marketing</option>
+              <option value="blockchain">Blockchain / Web3</option>
+              <option value="other">Other Inquiry</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" required placeholder="Tell me about your project..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer container">
+    <div class="footer__bottom" style="border-top: none; padding-top: 0;">
+      <div class="footer__copyright">&copy; <span id="year">2026</span> LeukocyteNG. All rights reserved.</div>
+      <div class="footer__legal">
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

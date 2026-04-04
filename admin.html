@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | LeukocyteNG</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body { background: var(--bg-primary); }
+    [contenteditable="true"]:empty:before {
+      content: attr(placeholder);
+      pointer-events: none;
+      display: block; /* For Firefox */
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar__logo">Leuko<span>cyteNG</span> Admin</div>
+      <nav class="admin-nav">
+        <a href="#" class="active" id="navNewPost"><span>✍️</span> Write Post</a>
+        <a href="#" id="navManagePosts"><span>📂</span> Manage Posts</a>
+        <a href="index.html" style="margin-top: 40px; border-left: none; color: var(--text-muted);"><span>&larr;</span> Back to Site</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      
+      <!-- Write View -->
+      <div id="viewWrite">
+        <div class="admin-header">
+          <h1>Create New Post</h1>
+          <button class="btn btn-primary" id="btnPublish">Publish Post</button>
+        </div>
+
+        <div class="admin-meta">
+          <div class="form-group">
+            <label>Post Title</label>
+            <input type="text" id="postTitle" placeholder="Enter an engaging title...">
+          </div>
+          <div class="form-group">
+            <label>Category</label>
+            <select id="postCategory">
+              <option value="Web Dev">Web Development</option>
+              <option value="SEO">SEO</option>
+              <option value="Blockchain">Blockchain</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Design">Design</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom: 24px;">
+          <label>Short Excerpt</label>
+          <input type="text" id="postExcerpt" placeholder="Brief summary of the article (for homepage/blog feed)">
+        </div>
+
+        <div class="admin-editor">
+          <div class="editor-toolbar">
+            <button onclick="document.execCommand('bold', false, null)"><b>B</b></button>
+            <button onclick="document.execCommand('italic', false, null)"><i>I</i></button>
+            <button onclick="document.execCommand('underline', false, null)"><u>U</u></button>
+            <button onclick="document.execCommand('formatBlock', false, 'H2')">H2</button>
+            <button onclick="document.execCommand('formatBlock', false, 'H3')">H3</button>
+            <button onclick="document.execCommand('insertUnorderedList', false, null)">• List</button>
+            <button onclick="document.execCommand('insertOrderedList', false, null)">1. List</button>
+            <button onclick="insertLink()">Link</button>
+          </div>
+          <div id="editor-area" contenteditable="true" placeholder="Start writing your article here..."></div>
+        </div>
+      </div>
+
+      <!-- Manage View -->
+      <div id="viewManage" style="display: none;">
+        <div class="admin-header">
+          <h1>Manage Posts</h1>
+        </div>
+        <table class="admin-posts-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="postsTableBody">
+            <!-- Populated via JS -->
+          </tbody>
+        </table>
+      </div>
+
+    </main>
+  </div>
+
+  <div class="toast" id="adminToast"></div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

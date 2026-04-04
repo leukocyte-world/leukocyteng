@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://leukocyteng.com/sitemap.xml
+
+User-agent: *
+Disallow: /admin.html
+Disallow: /js/admin.js
