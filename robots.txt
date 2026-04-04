@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://leukocyteng.com/sitemap.xml
+Sitemap: https://leukocyteng.com.ng/sitemap.xml
 
 User-agent: *
 Disallow: /admin.html
