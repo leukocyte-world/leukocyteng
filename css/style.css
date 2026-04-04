@@ -343,8 +343,8 @@ button { cursor: pointer; border: none; outline: none; background: none; font-fa
 
 .hero__cta { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
 @media (max-width: 480px) {
-  .hero__cta { flex-direction: column; width: 100%; }
-  .hero__cta .btn { width: 100%; justify-content: center; }
+  .hero__cta { flex-direction: column; align-items: stretch; width: 100%; gap: 12px; }
+  .hero__cta .btn { display: flex; width: 100%; justify-content: center; margin: 0; }
 }
 
 .hero__stats {
@@ -977,11 +977,11 @@ button { cursor: pointer; border: none; outline: none; background: none; font-fa
   .cta-banner        { padding: 48px 28px; }
   .form-row          { grid-template-columns: 1fr; }
   .hero__stats       { flex-direction: column; gap: 24px; }
-  .hero h1           { font-size: 2.2rem; }
-  .hero__desc        { font-size: 0.95rem; }
-  .container         { padding: 0 20px; }
-  .section           { padding: 60px 0; }
-  .cta-banner        { padding: 40px 20px; }
+  .hero h1           { font-size: 2.2rem; margin-bottom: 16px; }
+  .hero__desc        { font-size: 0.95rem; margin-bottom: 32px; }
+  .container         { padding: 0 16px; }
+  .section           { padding: 50px 0; }
+  .cta-banner        { padding: 40px 16px; }
 }
 
 /* =============================================
