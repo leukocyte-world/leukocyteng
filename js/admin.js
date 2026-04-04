@@ -12,10 +12,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const GITHUB_REPO = 'leukocyte-world/leukocyteng';
   let GH_PAT = localStorage.getItem('GH_PAT_KEY') || '';
 
-  // Only ask for PAT if on admin page and not cached
-  if (!GH_PAT && window.location.pathname.includes('admin')) {
-    GH_PAT = prompt("Please enter your GitHub Personal Access Token (PAT) for Admin Dashboard access:\n(This securely stores locally so you don't have to enter it again to publish blogs.)");
-    if(GH_PAT) localStorage.setItem('GH_PAT_KEY', GH_PAT);
+  // Auth Proxy over Admin Dashboard
+  if (window.location.pathname.includes('admin')) {
+    const isLogged = sessionStorage.getItem('LEUKO_LOGGED');
+    if (!isLogged) {
+      const email = prompt("Enter Admin Email:");
+      if (email !== 'leukocyteng@gmail.com') {
+        alert("Unauthorized.");
+        document.body.innerHTML = "<h1 style='text-align:center; margin-top:20vh;'>Access Denied</h1>";
+        throw new Error("Unauthorized");
+      }
+      
+      const pwd = prompt("Enter Admin Password:");
+      if (pwd !== 'creatorops2026') {
+        alert("Incorrect password.");
+        document.body.innerHTML = "<h1 style='text-align:center; margin-top:20vh;'>Access Denied</h1>";
+        throw new Error("Unauthorized");
+      }
+      
+      sessionStorage.setItem('LEUKO_LOGGED', 'true');
+    }
+
+    if (!GH_PAT) {
+      GH_PAT = prompt("Please enter your GitHub Personal Access Token (PAT) for GitHub backend sync:\n(This securely stores locally so you don't have to enter it again to publish blogs.)");
+      if(GH_PAT) localStorage.setItem('GH_PAT_KEY', GH_PAT);
+    }
   }
 
   // Base API caller
