@@ -11,7 +11,6 @@
 </head>
 <body>
   <div class="mesh-bg"></div>
-
   <!-- Navigation -->
   <nav class="nav">
     <div class="container nav__inner">
@@ -28,7 +27,6 @@
       <button class="nav__toggle" id="navToggle"><span></span><span></span><span></span></button>
     </div>
   </nav>
-
   <div class="nav__mobile" id="mobileNav">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -37,13 +35,11 @@
     <a href="blog.html" class="active">Blog</a>
     <a href="contact.html">Contact</a>
   </div>
-
   <header class="page-hero container">
     <div class="badge">Insights & Thoughts</div>
     <h1>The LEUKOCYTENG Blog</h1>
     <p>Articles on breaking down complex development concepts, dominating search engine rankings, and navigating the vast Web3 landscape.</p>
   </header>
-
   <section class="section container" style="padding-top: 0;">
     <!-- Dynamic Blog Container (Loaded from LocalStorage later via admin) -->
     <div class="blog-grid" id="blogContainer">
@@ -58,7 +54,6 @@
         <p>A deep dive into semantic SEO, structured data, and why keyword stuffing is officially obsolete...</p>
         <div class="blog-card__read">Read Article &rarr;</div>
       </a>
-      
       <a href="#" class="card blog-card">
         <div class="blog-card__thumb" style="background: rgba(79,141,255,0.1);"></></div>
         <div class="blog-card__meta">
@@ -71,26 +66,21 @@
       </a>
     </div>
   </section>
-
   <footer class="footer container">
     <div class="footer__bottom" style="border-top: none; padding-top: 0;">
       <div class="footer__copyright">&copy; <span id="year">2026</span> LEUKOCYTENG. All rights reserved.</div>
       <div class="footer__legal">
         <a href="privacy-policy.html">Privacy</a>
-        <a href="admin.html">Admin Login</a>
       </div>
     </div>
   </footer>
-
   <script src="js/main.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    
     window.addEventListener('DOMContentLoaded', async () => {
       try {
         const response = await fetch('posts.json');
         if (!response.ok) throw new Error('No posts.json found');
-        
         const posts = await response.json();
         if(posts && posts.length > 0) {
           const container = document.getElementById('blogContainer');
