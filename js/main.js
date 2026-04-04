@@ -107,12 +107,34 @@ document.addEventListener('DOMContentLoaded', () => {
       const btn = this.querySelector('[type="submit"]');
       btn.textContent = 'Sending…';
       btn.disabled = true;
-      setTimeout(() => {
+
+      const payload = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value
+      };
+
+      fetch("https://formsubmit.co/ajax/leukocyteng@gmail.com", {
+        method: "POST",
+        headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+      .then(response => response.json())
+      .then(data => {
         showToast('✅ Message sent! I\'ll get back to you shortly.');
         this.reset();
         btn.textContent = 'Send Message';
         btn.disabled = false;
-      }, 1800);
+      })
+      .catch(error => {
+        showToast('❌ Failed to send message. Please try again.');
+        btn.textContent = 'Send Message';
+        btn.disabled = false;
+      });
     });
   }
 
