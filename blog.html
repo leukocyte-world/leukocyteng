@@ -85,27 +85,37 @@
   <script src="js/main.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    // In a real scenario or with JS, we pull posts from localStorage here
-    window.addEventListener('DOMContentLoaded', () => {
-      const posts = JSON.parse(localStorage.getItem('leuko_blog_posts') || '[]');
-      if(posts.length > 0) {
-        const container = document.getElementById('blogContainer');
-        // Clear static if dynamic exists
-        // container.innerHTML = ''; 
-        posts.forEach(post => {
-          container.insertAdjacentHTML('afterbegin', `
-            <a href="#" class="card blog-card">
-              <div class="blog-card__thumb" style="background: rgba(0,224,127,0.1);">📝</div>
-              <div class="blog-card__meta">
-                <span class="blog-card__cat">${post.category || 'General'}</span>
-                <span>${post.date}</span>
-              </div>
-              <h3>${post.title}</h3>
-              <p>${post.excerpt}</p>
-              <div class="blog-card__read">Read Article &rarr;</div>
-            </a>
-          `);
-        });
+    
+    window.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const response = await fetch('posts.json');
+        if (!response.ok) throw new Error('No posts.json found');
+        
+        const posts = await response.json();
+        if(posts && posts.length > 0) {
+          const container = document.getElementById('blogContainer');
+          // Clear static visual fallback if dynamic posts exist
+          container.innerHTML = ''; 
+          posts.forEach(post => {
+            const thumbHtml = post.thumbnail ? `<img src="${post.thumbnail}" style="width:100%; height:100%; object-fit:cover;">` : '<span style="font-size:2rem; line-height:80px;">📝</span>';
+            container.insertAdjacentHTML('beforeend', `
+              <a href="#" class="card blog-card" style="cursor: pointer;">
+                <div class="blog-card__thumb" style="background: rgba(0,224,127,0.1); overflow: hidden; display:flex; align-items:center; justify-content:center;">
+                   ${thumbHtml}
+                </div>
+                <div class="blog-card__meta">
+                  <span class="blog-card__cat">${post.category || 'General'}</span>
+                  <span>${post.date}</span>
+                </div>
+                <h3>${post.title}</h3>
+                <p>${post.excerpt}</p>
+                <div class="blog-card__read">Read Article &rarr;</div>
+              </a>
+            `);
+          });
+        }
+      } catch(e) {
+        console.warn('Could not load dynamic posts:', e);
       }
     });
   </script>
