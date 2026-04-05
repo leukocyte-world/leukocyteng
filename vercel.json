@@ -2,7 +2,7 @@
   "cleanUrls": true,
   "headers": [
     {
-      "source": "/sitemap.xml",
+      "source": "/(sitemap.xml|sitemap)",
       "headers": [
         {
           "key": "Content-Type",
