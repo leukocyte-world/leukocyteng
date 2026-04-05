@@ -1,18 +1,5 @@
 {
   "cleanUrls": true,
-  "redirects": [
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.leukocyteng.com.ng"
-        }
-      ],
-      "destination": "https://leukocyteng.com.ng/$1",
-      "permanent": true
-    }
-  ],
   "headers": [
     {
       "source": "/sitemap.xml",
@@ -20,10 +7,6 @@
         {
           "key": "Content-Type",
           "value": "application/xml"
-        },
-        {
-          "key": "X-Robots-Tag",
-          "value": "index, follow"
         }
       ]
     },
